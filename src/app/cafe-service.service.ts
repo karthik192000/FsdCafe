@@ -41,6 +41,4 @@ export class CafeServiceService {
     let httpHeaders = new HttpHeaders({["authtoken"]:token});
     return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
    }
-
-
 }

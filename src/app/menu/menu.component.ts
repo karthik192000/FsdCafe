@@ -4,7 +4,7 @@ import { CafeServiceService } from '../cafe-service.service';
 import { Observable } from 'rxjs';
 import { get } from 'http';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
 
   menu:Menu[] = [];
 
-  constructor(private cafeService:CafeServiceService){
+  constructor(private cafeService:CafeServiceService,private router:Router){
   }
 
   ngOnInit(): void {
@@ -31,6 +31,11 @@ export class MenuComponent implements OnInit {
     })
   }  
 
+
+  logout(){
+    localStorage.removeItem('authtoken');
+    this.router.navigate(['../login']);
+  }
 
 
 
