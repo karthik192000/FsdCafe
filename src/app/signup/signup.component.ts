@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CreateUserRequest } from '../CreateUserRequest';
 import { CafeServiceService } from '../cafe-service.service';
-import { response } from 'express';
 import { SignUpResponse } from '../SignUpResponse';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +21,7 @@ export class SignupComponent {
   role:string = '';
   createUserRequest:any;
 
-  constructor(private cafeService:CafeServiceService){
+  constructor(private cafeService:CafeServiceService, private _router:Router){
 
   }
 
@@ -51,6 +50,8 @@ export class SignupComponent {
     this.cafeService.signup(this.createUserRequest).subscribe(response => {
       console.log(response);
     })
+
+    this._router.navigate(['/login']);
   }
 
 }

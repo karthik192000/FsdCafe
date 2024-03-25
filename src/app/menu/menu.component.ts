@@ -4,11 +4,12 @@ import { CafeServiceService } from '../cafe-service.service';
 import { Observable } from 'rxjs';
 import { get } from 'http';
 import { CommonModule } from '@angular/common';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterOutlet,RouterModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

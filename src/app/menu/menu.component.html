@@ -10,14 +10,20 @@
                 <td>Item Name</td>
                 <td>Item Price</td>
                 <td>Item category</td>
-                <td>Item price</td>
+                <td>Veg or Non-Veg</td>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of menu">
                 <td>{{item.itemName}}</td>
+                <td>{{item.itemPrice}}</td>
+                <td>{{item.itemCategory}}</td>
+                <td>{{item.vegOrNonVeg}}</td>
             </tr>
         </tbody>
     </table>
+
+    <router-outlet></router-outlet>
+    <a routerLink="/home" style="margin: 16px;">Home</a>
 
 </div>

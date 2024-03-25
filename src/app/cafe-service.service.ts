@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenResponse } from './TokenResponse';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequest } from './LoginRequest';
 import { CreateUserRequest } from './CreateUserRequest';
 import { SignUpResponse } from './SignUpResponse';
 import { Menu } from './Menu';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tick } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class CafeServiceService {
 
    getMenu(){
     let token = localStorage.getItem("authtoken")!;
-    let httpHeaders = new HttpHeaders({"authtoken":token});
+    let httpHeaders = new HttpHeaders({["authtoken"]:token});
     return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
    }
 
