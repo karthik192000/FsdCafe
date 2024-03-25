@@ -1,0 +1,23 @@
+<div class="menuContainer">
+
+
+    <p>Welcome to FSD Cafe, please take a look at our menu</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Item Name</td>
+                <td>Item Price</td>
+                <td>Item category</td>
+                <td>Item price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of menu">
+                <td>{{item.itemName}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

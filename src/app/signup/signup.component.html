@@ -1,0 +1,39 @@
+<div class="signUpContainer" style="text-align: center;">
+
+    <form [formGroup] = 'signUp' (ngSubmit)="onSignUp()">
+
+        <label for="username">Username: </label>
+        <input type="email" #username formControlName="username">
+
+        <br><br>
+
+        <label for="username">Name: </label>
+        <input type="email" #username formControlName="name">
+
+        <br><br>
+
+        <label for="password">Password: </label>
+        <input type="password" #password formControlName="password">
+
+        <br><br>
+
+        <label for="confirmPassword">Confirm Password: </label>
+        <input type="password" #confirmPassword formControlName="confirmPassword">
+
+        <br><br>
+
+        <label for="role">Role</label>
+        <input type="radio" #role value="EMPLOYEE"formControlName="role"> Employee
+        <input type="radio" #role  value="CUSTOMER" formControlName="role"> Customer
+        <input type="radio" #role  value="ADMIN" formControlName="role"> ADMIN
+
+        <button type="submit">Sign-Up</button>
+        <br>
+        <br>
+
+        <router-outlet></router-outlet>
+        <a routerLink="/home" style="margin: 16px;">Home</a>
+        <router-outlet></router-outlet>
+        <a routerLink="/login">Login</a>
+    </form>
+</div>
