@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CafeServiceService } from '../cafe-service.service';
 import { TokenResponse } from '../TokenResponse';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { routes } from '../app.routes';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,9 @@ export class LoginComponent implements OnInit{
 
 
   ngOnInit(): void {
-  //
+    if(localStorage.getItem('authtoken')!=null){
+      this._router.navigate(['../menu']);
+    }
   }
 
 

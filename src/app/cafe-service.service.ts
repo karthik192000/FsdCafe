@@ -7,6 +7,7 @@ import { SignUpResponse } from './SignUpResponse';
 import { Menu } from './Menu';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tick } from '@angular/core/testing';
+import { TokenValidationResponse } from './TokenValidationResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,14 @@ export class CafeServiceService {
   loginUrl:string;
   signUpUrl:string;
   getMenuUrl:string;
+  validateTokenUrl:string;
   public loginRequest:any;
 
   constructor(private http:HttpClient) {
     this.loginUrl = 'http://localhost:9090/login';
     this.signUpUrl = 'http://localhost:9090/signup';
     this.getMenuUrl= 'http://localhost:8080/cafeservice/menu';
+    this.validateTokenUrl = 'http://localhost:9090/validate';
    }
 
 
@@ -40,5 +43,12 @@ export class CafeServiceService {
     let token = localStorage.getItem("authtoken")!;
     let httpHeaders = new HttpHeaders({["authtoken"]:token});
     return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
+   }
+
+
+   validateToken(token:string):Observable<TokenValidationResponse>{
+    let httpHeaders = new HttpHeaders({['authtoken']:token});
+    let status = '';
+   return this.http.get<TokenValidationResponse>(`${this.validateTokenUrl}`,{headers:httpHeaders});
    }
 }

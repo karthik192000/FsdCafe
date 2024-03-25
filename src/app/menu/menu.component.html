@@ -1,4 +1,4 @@
-<div class="menuContainer">
+<div class="menuContainer" style="display: inline-block;float: left; margin: 50px;">
 
 
     <p>Welcome to FSD Cafe, please take a look at our menu</p>
@@ -14,18 +14,50 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of menu">
+            <tr *ngFor="let item of menu; index as i">
                 <td>{{item.itemName}}</td>
                 <td>{{item.itemPrice}}</td>
                 <td>{{item.itemCategory}}</td>
                 <td>{{item.vegOrNonVeg}}</td>
+                <td>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" #quantity style="margin: 4px;">
+                    <button (click)="addToCart(i,quantity.value)">Add to Cart</button></td>
             </tr>
         </tbody>
     </table>
-
-    <router-outlet></router-outlet>
-    <a routerLink="/home" style="margin: 16px;">Home</a>
-
-    <button (click)="logout()">Logout</button>
-
 </div>
+
+<br><br><br>
+<div class="orderContainer" style="display: inline-block;float: left">
+
+    <p style="text-align: center;">Order</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Item Name</td>
+                <td>Item Price</td>
+                <td>Quantity</td>
+                <td>Total Price</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of orderList; index as i">
+                <td>{{item.itemName}}</td>
+                <td>{{item.itemPrice}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.totalPrice}}</td>
+                <td><button (click)="removeFromCart(i)">Remove From cart</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Total price:</p>
+    {{totalOrderPrice}}
+</div>
+
+
+<router-outlet></router-outlet>
+<a routerLink="/home" style="margin: 16px;">Home</a>
+
+<button (click)="logout()">Logout</button>
