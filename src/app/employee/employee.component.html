@@ -11,8 +11,33 @@
                 <td>Item Price</td>
                 <td>Item category</td>
                 <td>Veg or Non-Veg</td>
+                <td>Action</td>
             </tr>
         </thead>
+        <tbody>
+            <tr *ngFor="let item of menu; index as i;">
+                <td>
+                    <input type="text" value={{item.itemName}}  #itemName>
+                </td>
+                <td>
+                    
+                    <input type="text" value={{item.itemPrice}}  #itemPrice>
+                
+                </td>
+                <td>
+                    <input type="text" value={{item.itemCategory}}  #itemCategory>
+                </td>
+                <td>
+                    
+                    <input type="text" value={{item.vegOrNonVeg}}  #vegOrNonVeg>
+                
+                </td>
+                <td>
+                    <button>Update Item</button>
+                    <button (click)="deleteFromMenu(i)">Delete Item</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 

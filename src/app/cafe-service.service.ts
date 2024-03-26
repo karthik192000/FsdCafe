@@ -5,7 +5,7 @@ import { LoginRequest } from './LoginRequest';
 import { CreateUserRequest } from './CreateUserRequest';
 import { SignUpResponse } from './SignUpResponse';
 import { Menu } from './Menu';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tick } from '@angular/core/testing';
 import { TokenValidationResponse } from './TokenValidationResponse';
 
@@ -20,6 +20,7 @@ export class CafeServiceService {
   signUpUrl:string;
   getMenuUrl:string;
   validateTokenUrl:string;
+  removeFromMenuUrl:string;
   public loginRequest:any;
 
   constructor(private http:HttpClient) {
@@ -27,6 +28,7 @@ export class CafeServiceService {
     this.signUpUrl = 'http://localhost:9090/signup';
     this.getMenuUrl= 'http://localhost:8080/cafeservice/menu';
     this.validateTokenUrl = 'http://localhost:9090/validate';
+    this.removeFromMenuUrl =  'http://localhost:8080/cafeservice/menu';
    }
 
 
@@ -40,7 +42,7 @@ export class CafeServiceService {
    }
 
    getMenu(){
-    let token = localStorage.getItem("authtoken")!;
+    let token = localStorage?.getItem("authtoken")!;
     let httpHeaders = new HttpHeaders({["authtoken"]:token});
     return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
    }
@@ -53,6 +55,19 @@ export class CafeServiceService {
    }
 
    logout(){
-    localStorage.clear();
+    localStorage?.clear();
+   }
+
+   removeFromMenu(itemKey: number){
+    let token = localStorage?.getItem('authtoken')!;
+    let httpHeaders = new HttpHeaders({['authtoken']:token});
+    let params = new HttpParams();
+    params.append('itemkey',itemKey);
+    let api = this.removeFromMenuUrl + '?itemkey=' + JSON.stringify(itemKey);
+    this.http.delete(api,{headers:httpHeaders,params:params}).subscribe(data=>
+      {
+        console.log(data);
+      });
+    window.location.reload();  
    }
 }

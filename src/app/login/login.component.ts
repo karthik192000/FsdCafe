@@ -27,8 +27,10 @@ export class LoginComponent implements OnInit{
 
 
   ngOnInit(): void {
-    if(localStorage.getItem('authtoken')!=null){
-      let route = localStorage.getItem('role') == 'CUSTOMER' ? '../menu' : (localStorage.getItem('role') == 'ADMIN' ? '../employee' : '' );
+    let token = localStorage!?.getItem('authtoken');
+    if(token!=null){
+      let role = localStorage?.getItem('role');
+      let route = role == 'CUSTOMER' ? '../menu' : (role == 'ADMIN' ? '../employee' : '') ;
       this._router.navigate([route]);
     }
   }
@@ -36,8 +38,8 @@ export class LoginComponent implements OnInit{
 
   onLogin(){
     this.cafeService.login(this.login.get('username')!.value,this.login.get('password')!.value,this.login.get('role')!.value).subscribe(response=>{
-      localStorage.setItem('authtoken',response.token);
-      localStorage.setItem('role',this.login.get('role')!.value);
+      localStorage?.setItem('authtoken',response.token);
+      localStorage?.setItem('role',this.login.get('role')!.value);
       let role = this.login.get('role')!.value;
       let route = '';
       if(role == 'CUSTOMER'){
