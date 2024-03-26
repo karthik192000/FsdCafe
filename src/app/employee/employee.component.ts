@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CafeServiceService } from '../cafe-service.service';
 import { Menu } from '../Menu';
 import { NgModel } from '@angular/forms';
@@ -16,7 +16,7 @@ export class EmployeeComponent implements OnInit{
 
   menu:Menu[] = [];
 
-  constructor(private cafeService: CafeServiceService){
+  constructor(private cafeService: CafeServiceService, private router:Router){
     
   }
   ngOnInit(): void {
@@ -35,6 +35,19 @@ export class EmployeeComponent implements OnInit{
     let itemTobeDeleted = this.menu.at(index);
     let itemKey = itemTobeDeleted?.itemKey;
     this.cafeService.removeFromMenu(itemKey!);
+    window.location.reload();
+  }
+
+  updateItem(index: number, itemname:string,itemprice:number,itemCategory:string,vegornonveg:string){
+    let itemToBeUpdated = this.menu.at(index);
+    itemToBeUpdated = new Menu(itemToBeUpdated?.itemKey!,itemname,itemCategory,itemprice,vegornonveg);
+    
+
+  }
+
+  logout(){
+    this.cafeService.logout();
+    this.router.navigate(['../login']);
   }
 
 

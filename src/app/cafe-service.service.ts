@@ -68,6 +68,9 @@ export class CafeServiceService {
       {
         console.log(data);
       });
-    window.location.reload();  
+   }
+
+   updateItemInMenu(menu:Menu){
+    
    }
 }
