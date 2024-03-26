@@ -51,4 +51,8 @@ export class CafeServiceService {
     let status = '';
    return this.http.get<TokenValidationResponse>(`${this.validateTokenUrl}`,{headers:httpHeaders});
    }
+
+   logout(){
+    localStorage.clear();
+   }
 }

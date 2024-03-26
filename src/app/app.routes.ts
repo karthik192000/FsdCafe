@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { MenuComponent } from './menu/menu.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,10 @@ export const routes: Routes = [
 {
     component:MenuComponent,
     path:'menu'
+},
+{
+    component: EmployeeComponent,
+    path:'employee'
 },
 {
     path:'**',

@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
 
 
   logout(){
-    localStorage.removeItem('authtoken');
+    this.cafeService.logout();
     this.router.navigate(['../login']);
   }
 
