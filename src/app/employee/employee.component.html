@@ -7,18 +7,19 @@
     <button (click)="logout()">Logout</button>
 </div>
 
-<div class="menuContainer" style="display: inline-block;float: left; margin: 50px;">
+<div class="menuContainer" style="display: inline-block;float: left; margin: 16px;">
 
 
-    <p>Welcome to FSD cafe employee portal</p>
-    <table border="1">
+    <div class="menuTable" style="display: inline-block;float: left; margin: 16px;">
+    <p style="text-align: center;">Welcome to FSD cafe employee portal</p>
+    <table border="1" class="menuTable">
         <thead>
             <tr>
-                <td>Item Name</td>
-                <td>Item Price</td>
-                <td>Item category</td>
-                <td>Veg or Non-Veg</td>
-                <td>Action</td>
+                <th scope="col">Item Name</th>
+                <th scope="col">Item Price</th>
+                <th scope="col">Item category</th>
+                <th scope="col">Veg or Non-Veg</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -46,9 +47,25 @@
             </tr>
         </tbody>
     </table>
+    </div>
 
-    <div class="addToMenuContainer">
-        
+    <div class="addToMenuContainer" style="display: inline-block;float: right; margin: 16x;">
+
+        <p style="margin: 50px;text-align: center;">Add Item to Menu</p>
+        <form [formGroup]="menuFormGroup" (ngSubmit)="addItemToMenu()">
+
+            <label for="itemName">Item Name:</label>
+            <input #itemName type="text" formControlName="itemName" style="margin: 16px;">
+            <label for="itemPrice">Item Price:</label>
+            <input #itemPrice type="number" formControlName="itemPrice" style="margin: 16px;">
+            <br>
+            <label for="itemCategory">Item Category:</label>
+            <input #itemCategory type="text" formControlName="itemCategory" style="margin: 16px;">
+            <label for="itemCategory">Veg or Non-Veg:</label>
+            <input #vegOrNonVeg type="text" formControlName="vegOrNonVeg" style="margin: 16px;">
+            <br><br>
+            <button type="submit" style="display: inline-block;float: right;">Add to Menu</button>
+        </form>
     </div>
 </div>
 

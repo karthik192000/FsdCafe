@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CafeServiceService } from '../cafe-service.service';
 import { Menu } from '../Menu';
-import { NgModel } from '@angular/forms';
+import { FormControl, FormGroup, NgModel, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,RouterModule],
+  imports: [CommonModule,RouterOutlet,RouterModule,ReactiveFormsModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
@@ -48,6 +48,10 @@ export class EmployeeComponent implements OnInit{
     this.reload();
   }
 
+  addItemToMenu(){
+    
+  }
+
   logout(){
     this.cafeService.logout();
     this.router.navigate(['../login']);
@@ -56,6 +60,13 @@ export class EmployeeComponent implements OnInit{
   reload(){
     window.location.reload();
   }
+
+  menuFormGroup = new FormGroup({
+    itemName:new FormControl(),
+    itemPrice:new FormControl(),
+    itemCategory: new FormControl(),
+    vegOrNonVeg: new FormControl()
+  })
 
 
 }
