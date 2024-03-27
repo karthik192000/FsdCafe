@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
     let token = localStorage!?.getItem('authtoken');
     if(token!=null){
       let role = localStorage?.getItem('role');
-      let route = role == 'CUSTOMER' ? '../menu' : (role == 'ADMIN' ? '../employee' : '') ;
+      let route = role == 'CUSTOMER' ? '../menu' : ((role == 'ADMIN') ||(role == 'EMPLOYEE')  ? '../employee' : '') ;
       this._router.navigate([route]);
     }
   }
