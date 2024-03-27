@@ -35,19 +35,26 @@ export class EmployeeComponent implements OnInit{
     let itemTobeDeleted = this.menu.at(index);
     let itemKey = itemTobeDeleted?.itemKey;
     this.cafeService.removeFromMenu(itemKey!);
-    window.location.reload();
+    this.reload();
   }
 
-  updateItem(index: number, itemname:string,itemprice:number,itemCategory:string,vegornonveg:string){
+  updateItem(index: number, itemname:string,itempriceString:string,itemCategory:string,vegornonveg:string){
+    let itemprice = parseInt(itempriceString);
     let itemToBeUpdated = this.menu.at(index);
     itemToBeUpdated = new Menu(itemToBeUpdated?.itemKey!,itemname,itemCategory,itemprice,vegornonveg);
-    
-
+    let itemList:Menu[] = [];
+    itemList.push(itemToBeUpdated);
+    this.cafeService.updateItemInMenu(itemList);
+    this.reload();
   }
 
   logout(){
     this.cafeService.logout();
     this.router.navigate(['../login']);
+  }
+
+  reload(){
+    window.location.reload();
   }
 
 

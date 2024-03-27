@@ -1,9 +1,16 @@
+
+<div class="optionsContainer" style="display: inline-block;float: right;">
+    <router-outlet>
+    </router-outlet>
+    <a routerLink="/home" style="margin: 16px;">Home</a>
+    
+    <button (click)="logout()">Logout</button>
+</div>
+
 <div class="menuContainer" style="display: inline-block;float: left; margin: 50px;">
 
 
     <p>Welcome to FSD cafe employee portal</p>
-
-
     <table border="1">
         <thead>
             <tr>
@@ -33,20 +40,16 @@
                 
                 </td>
                 <td>
-                    <button>Update Item</button>
+                    <button (click)="updateItem(i,itemName.value,itemPrice.value,itemCategory.value,vegOrNonVeg.value)">Update Item</button>
                     <button (click)="deleteFromMenu(i)">Delete Item</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <div class="addToMenuContainer">
+        
+    </div>
 </div>
 
-<div>
 
-</div>
-
-<router-outlet>
-</router-outlet>
-<a routerLink="/home">Home</a>
-
-<button (click)="logout()">Logout</button>

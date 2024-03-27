@@ -21,6 +21,7 @@ export class CafeServiceService {
   getMenuUrl:string;
   validateTokenUrl:string;
   removeFromMenuUrl:string;
+  updateMenuUrl:string;
   public loginRequest:any;
 
   constructor(private http:HttpClient) {
@@ -29,6 +30,7 @@ export class CafeServiceService {
     this.getMenuUrl= 'http://localhost:8080/cafeservice/menu';
     this.validateTokenUrl = 'http://localhost:9090/validate';
     this.removeFromMenuUrl =  'http://localhost:8080/cafeservice/menu';
+    this.updateMenuUrl = 'http://localhost:8080/cafeservice/menu';
    }
 
 
@@ -42,14 +44,13 @@ export class CafeServiceService {
    }
 
    getMenu(){
-    let token = localStorage?.getItem("authtoken")!;
-    let httpHeaders = new HttpHeaders({["authtoken"]:token});
+    let httpHeaders = this.getHttpHeaders();
     return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
    }
 
 
    validateToken(token:string):Observable<TokenValidationResponse>{
-    let httpHeaders = new HttpHeaders({['authtoken']:token});
+    let httpHeaders = this.getHttpHeaders();
     let status = '';
    return this.http.get<TokenValidationResponse>(`${this.validateTokenUrl}`,{headers:httpHeaders});
    }
@@ -59,8 +60,7 @@ export class CafeServiceService {
    }
 
    removeFromMenu(itemKey: number){
-    let token = localStorage?.getItem('authtoken')!;
-    let httpHeaders = new HttpHeaders({['authtoken']:token});
+    let httpHeaders = this.getHttpHeaders();
     let params = new HttpParams();
     params.append('itemkey',itemKey);
     let api = this.removeFromMenuUrl + '?itemkey=' + JSON.stringify(itemKey);
@@ -70,7 +70,17 @@ export class CafeServiceService {
       });
    }
 
-   updateItemInMenu(menu:Menu){
-    
+   updateItemInMenu(itemList:Menu[]){
+    let httpHeaders = this.getHttpHeaders();
+    this.http.put(this.updateMenuUrl,itemList,{headers:httpHeaders}).subscribe(data => {
+      console.log('Updated Menu : ' + data);
+    });
+   }
+
+
+   getHttpHeaders():HttpHeaders{
+    let token = localStorage?.getItem('authtoken')!;
+    let httpHeaders = new HttpHeaders({['authtoken']:token});
+    return httpHeaders;
    }
 }

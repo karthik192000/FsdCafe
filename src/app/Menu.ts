@@ -10,7 +10,7 @@ export class Menu{
 
     constructor(itemKey:number,itemName:string,itemCategory:string,itemPrice:number,vegOrNonVeg:string){
         this.itemKey=itemKey;
-        this.itemName=itemCategory;
+        this.itemName=itemName;
         this.itemCategory=itemCategory;
         this.itemPrice=itemPrice;
         this.vegOrNonVeg = vegOrNonVeg;
