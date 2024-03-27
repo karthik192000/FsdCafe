@@ -22,6 +22,7 @@ export class CafeServiceService {
   validateTokenUrl:string;
   removeFromMenuUrl:string;
   updateMenuUrl:string;
+  addItemToMenuUrl:string;
   public loginRequest:any;
 
   constructor(private http:HttpClient) {
@@ -31,6 +32,7 @@ export class CafeServiceService {
     this.validateTokenUrl = 'http://localhost:9090/validate';
     this.removeFromMenuUrl =  'http://localhost:8080/cafeservice/menu';
     this.updateMenuUrl = 'http://localhost:8080/cafeservice/menu';
+    this.addItemToMenuUrl= 'http://localhost:8080/cafeservice/menu';
    }
 
 
@@ -77,7 +79,13 @@ export class CafeServiceService {
     });
    }
 
-
+   addItemToMenu(itemList:Menu[]){
+    let httpHeaders = this.getHttpHeaders();
+    this.http.post(this.addItemToMenuUrl,itemList,{headers:httpHeaders}).subscribe(data =>
+      {
+        console.log('Item added');
+      });
+   }
    getHttpHeaders():HttpHeaders{
     let token = localStorage?.getItem('authtoken')!;
     let httpHeaders = new HttpHeaders({['authtoken']:token});

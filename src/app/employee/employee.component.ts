@@ -49,7 +49,15 @@ export class EmployeeComponent implements OnInit{
   }
 
   addItemToMenu(){
-    
+    let itemName = this.menuFormGroup.get('itemName')!.value;
+    let itemPrice = this.menuFormGroup.get('itemPrice')!.value;
+    let itemCategory = this.menuFormGroup.get('itemCategory')!.value;
+    let vegOrNonVeg = this.menuFormGroup.get('vegOrNonVeg')!.value;
+    let itemList:Menu[] = [];
+    let itmeToBeAdded:any = {'itemName':itemName,'itemPrice':itemPrice,'itemCategory':itemCategory,'vegOrNonVeg':vegOrNonVeg};
+    itemList.push(itmeToBeAdded);
+    this.cafeService.addItemToMenu(itemList);
+    this.reload();
   }
 
   logout(){
