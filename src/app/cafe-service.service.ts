@@ -91,4 +91,8 @@ export class CafeServiceService {
     let httpHeaders = new HttpHeaders({['authtoken']:token});
     return httpHeaders;
    }
+
+   addToCart(){
+    
+   }
 }

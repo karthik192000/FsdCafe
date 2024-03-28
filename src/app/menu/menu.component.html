@@ -1,3 +1,10 @@
+<div class="optionsContainer" style="display: inline-block;float: right; margin: 16px;">
+    <router-outlet></router-outlet>
+    <a routerLink="/home" style="margin: 16px;">Home</a>
+    
+    <button (click)="logout()">Logout</button>
+</div>
+
 <div class="menuContainer" style="display: inline-block;float: left; margin: 50px;background-color: azure;">
 
 
@@ -55,9 +62,3 @@
     <p>Total price:</p>
      Rs. {{totalOrderPrice}}
 </div>
-
-
-<router-outlet></router-outlet>
-<a routerLink="/home" style="margin: 16px;">Home</a>
-
-<button (click)="logout()">Logout</button>
