@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit{
       if(role == 'CUSTOMER'){
         route = '../menu';
       }
-      else if(role == 'ADMIN'){
+      else if(role == 'ADMIN' || role == 'EMPLOYEE'){
         route = '../employee';
       }
       if(route !== ''){
