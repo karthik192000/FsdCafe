@@ -44,6 +44,6 @@ export class CartComponent implements OnInit{
 
   logout(){
     this.cafeService.logout();
+    this._router.navigate(['/login'])
   }
-
 }
