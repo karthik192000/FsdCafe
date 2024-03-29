@@ -1,88 +1,115 @@
-/* Styles for the homeContainer */
+/* Home Container */
 .homeContainer {
     text-align: center;
-    background-color: #FF7F50; /* Coral */
-    border: 0.3cm solid #FF7F50; /* Coral */
     padding: 20px;
-    margin-bottom: 20px;
+    background-color: #e5eaf2; /* Light blue-gray color for home container */
+    margin-top: 50px; /* Reduce space for the logo */
 }
 
 .homeContainer p {
-    font-size: 2em;
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #FFF; /* White */
+    font-size: 20px; /* Reduce font size for better compactness */
+    margin-bottom: 10px; /* Reduce space below the paragraph */
 }
 
 .homeContainer a {
-    margin: 16px;
-    font-size: 1.5em;
-    background-color: #FFF; /* White */
-    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px; /* Reduce margin for better compactness */
+    font-size: 18px; /* Reduce font size for better compactness */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #4caf50; /* Green border */
+    padding: 8px 16px; /* Reduce padding for better compactness */
     text-decoration: none;
-    color: #FF7F50; /* Coral */
+    color: #4caf50; /* Green text */
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 .homeContainer a:hover {
-    background-color: #FFA07A; /* Light Salmon */
-    color: #FFF; /* White */
+    background-color: #4caf50; /* Green background */
+    color: #fff; /* White text */
 }
 
-/* Styles for the Best Seller section */
+
+
+/* Best Seller Container */
+.bestSellerContainer {
+    margin-top: 20px; /* Reduce margin for better compactness */
+    margin-bottom: 20px; /* Reduce margin for better compactness */
+    background-color: #d9e8c3; /* Pistachio color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Best Seller Section */
 .container {
     text-align: center;
-    background-color: #FFF; /* White */
-    border: 0.3cm solid #FF7F50; /* Coral */
+    background-color: #fff; /* White background */
     padding: 20px;
-    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #FFF; /* Coral */
-    z-index: 1;
+.section-heading {
+    font-size: 28px; /* Reduce font size for better compactness */
+    color: #333;
+    margin-bottom: 10px; /* Reduce space below the heading */
 }
 
-.container .timeline {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items to the start to stack them vertically if needed */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
+.timeline li {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+    transition: transform 0.3s ease;
 }
 
-.container .timeline > li {
-    flex: 1;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
+.timeline-panel {
+    background-color: #f9f9f9; /* Lighter gray */
+    padding: 15px; /* Reduce padding for better compactness */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
-.container .timeline .timeline-panel {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #FFF; /* White */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px; /* Add margin between items */
+.timeline-panel:hover {
+    transform: translateY(-3px); /* Reduce hover effect for better compactness */
 }
 
-.container .timeline .timeline-panel p {
-    color: #555; /* Dark Gray */
-}
-
-.container .timeline .timeline-image {
-    flex: 1;
+.timeline-image {
+    width: 120px; /* Reduce width for better compactness */
+    height: 120px; /* Reduce height for better compactness */
+    border-radius: 50%;
     overflow: hidden;
 }
 
-.container .timeline .timeline-image img {
-    max-width: 100%; /* Reduce image size */
-    height: auto;
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.timeline-image img:hover {
+    transform: scale(1.05); /* Reduce hover effect for better compactness */
+}
+
+.timeline-body {
+    margin-top: 10px; /* Reduce space above timeline body */
+}
+
+.timeline-heading h4 {
+    color: #333;
+    margin-bottom: 5px; /* Reduce space below heading */
+}
+
+.timeline-body p {
+    color: #666;
+    margin-bottom: 0;
+}
+
+.logo {
+    width: 150px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add some space below the logo */
 }

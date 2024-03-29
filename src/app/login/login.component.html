@@ -1,19 +1,19 @@
-<div class="loginContainer" style="text-align: center;">
+<div class="loginContainer">
     <form [formGroup]="login" (ngSubmit)="onLogin()">
 
-        <div class="form-group">
+        <div class="name-group">
             <label for="name">User name (Email-Id): </label>
-            <input type="email" name="userName" #name formControlName="username" style="margin: 16px;">
+            <input type="email" name="userName" #name formControlName="username">
         </div>
 
 
         <br>
-        <div class="form-group">
+        <div class="password-group">
             <label for="password">Password: </label>
-            <input type="password" name="password" #password formControlName="password" style="margin: 16px;">
+            <input type="password" name="password" #password formControlName="password">
         </div>
         <br>
-        <div class="form-group">
+        <div class="role-group">
             <label for="role">Please select a role:</label>
             <input type="radio" name="role" value="EMPLOYEE" formControlName="role">Employee
             <input type="radio" name="role" value="CUSTOMER" formControlName="role">Customer
@@ -25,7 +25,7 @@
         </div>
         <br>
         <router-outlet></router-outlet>
-        <a routerLink="/home" style="margin: 16px;">Home</a>
+        <a routerLink="/home">Home</a>
         <router-outlet></router-outlet>
         <a routerLink="/signup">Sign Up</a>
         <router-outlet></router-outlet>

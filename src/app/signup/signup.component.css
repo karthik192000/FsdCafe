@@ -1,58 +1,76 @@
-/* CSS for Sign-Up Form */
- 
-/* Container */
+/* SignUp Container */
 .signUpContainer {
     text-align: center;
-    margin: 50px auto;
-    width: 300px; /* Adjust width as needed */
-    border: 1px solid #ccc;
     padding: 20px;
+    background-color: #f2f2f2;
+    margin: 50px auto;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    background-color: #e0e0e0; /* New background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
 }
- 
-/* Labels */
-label {
+
+.signUpContainer form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.signUpContainer .form-group {
+    margin-bottom: 20px;
+}
+
+.signUpContainer label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
 }
- 
-/* Input Fields */
-input[type="email"],
-input[type="password"],
-input[type="radio"] {
-    width: calc(100% - 10px); /* Adjust width as needed */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
- 
-/* Submit Button */
-button[type="submit"] {
+
+.signUpContainer input[type="email"],
+.signUpContainer input[type="password"] {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-top: 5px;
 }
- 
-button[type="submit"]:hover {
+
+.signUpContainer input[type="radio"] {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px; /* Adjust the margin between radio buttons */
+}
+
+.signUpContainer button[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.signUpContainer button[type="submit"]:hover {
     background-color: #45a049;
 }
- 
-/* Links */
-a {
-    display: block;
+
+.signUpContainer .links {
+    margin-top: 20px;
+}
+
+.signUpContainer a {
+    display: inline-block;
     margin-top: 10px;
     text-decoration: none;
-    color: #007bff;
+    color: #4caf50;
+    transition: color 0.3s ease;
 }
- 
-a:hover {
-    text-decoration: underline;
+
+.signUpContainer a:hover {
+    color: #45a049;
 }
