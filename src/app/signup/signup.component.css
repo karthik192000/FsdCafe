@@ -1,17 +1,14 @@
+/* CSS for Sign-Up Form */
+ 
 /* Container */
-.loginContainer {
+.signUpContainer {
     text-align: center;
     margin: 50px auto;
     width: 300px; /* Adjust width as needed */
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 5px;
-    background-color: #f9f9f9;
-}
- 
-/* Form Group */
-.form-group {
-    margin-bottom: 15px;
+    background-color: #e0e0e0; /* New background color */
 }
  
 /* Labels */
@@ -41,6 +38,7 @@ button[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
 }
  
 button[type="submit"]:hover {

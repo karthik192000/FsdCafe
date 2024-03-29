@@ -1,0 +1,105 @@
+/* Styles for the optionsContainer */
+.optionsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.optionsContainer a {
+    margin: 16px;
+    font-size: 1.2em;
+    color: #FF6347; /* Tomato */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.optionsContainer button {
+    font-size: 1.2em;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.optionsContainer button:hover {
+    background-color: #FF4500; /* OrangeRed */
+}
+
+/* Styles for the menuContainer */
+.menuContainer {
+    display: flex;
+    margin: 16px;
+}
+
+.menuTable {
+    margin-right: 16px;
+}
+
+.menuTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menuTable th, .menuTable td {
+    padding: 8px;
+    text-align: center;
+}
+
+.menuTable th {
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+}
+
+.menuTable tbody tr:nth-child(even) {
+    background-color: #FFE4E1; /* MistyRose */
+}
+
+.menuTable tbody tr:hover {
+    background-color: #FFA07A; /* LightSalmon */
+}
+
+.addToMenuContainer {
+    margin-top: 50px;
+}
+
+.addToMenuContainer p {
+    margin: 0;
+    font-size: 1.5em;
+    color: #FF6347; /* Tomato */
+}
+
+.addToMenuContainer form {
+    margin-top: 20px;
+}
+
+.addToMenuContainer label {
+    margin: 16px;
+    font-size: 1.1em;
+    color: #FF6347; /* Tomato */
+}
+
+.addToMenuContainer input[type="text"],
+.addToMenuContainer input[type="number"] {
+    margin: 16px;
+    padding: 8px;
+    border: 1px solid #FF6347; /* Tomato */
+    border-radius: 5px;
+}
+
+.addToMenuContainer button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addToMenuContainer button:hover {
+    background-color: #FF4500; /* OrangeRed */
+}

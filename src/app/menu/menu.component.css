@@ -1,0 +1,105 @@
+/* Styles for the optionsContainer */
+.optionsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 16px;
+}
+
+.optionsContainer a {
+    margin: 16px;
+    font-size: 1.2em;
+    color: #FF6347; /* Tomato */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.optionsContainer button {
+    font-size: 1.2em;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.optionsContainer button:hover {
+    background-color: #FF4500; /* OrangeRed */
+}
+
+/* Styles for the menuContainer */
+.menuContainer {
+    display: inline-block;
+    float: left;
+    margin: 50px;
+    background-color: #F0FFFF; /* Azure */
+    padding: 20px;
+}
+
+.menuContainer p {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.menuContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menuContainer table th, .menuContainer table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.menuContainer table th {
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+}
+
+.menuContainer table tbody tr:nth-child(even) {
+    background-color: #FFE4E1; /* MistyRose */
+}
+
+.menuContainer table tbody tr:hover {
+    background-color: #FFA07A; /* LightSalmon */
+}
+
+/* Styles for the orderContainer */
+.orderContainer {
+    display: inline-block;
+    float: left;
+    background-color: #FFE4C4; /* Bisque */
+    padding: 20px;
+}
+
+.orderContainer p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.orderContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orderContainer table th, .orderContainer table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.orderContainer table th {
+    background-color: #FF6347; /* Tomato */
+    color: #FFF; /* White */
+}
+
+.orderContainer table tbody tr:nth-child(even) {
+    background-color: #FFE4E1; /* MistyRose */
+}
+
+.orderContainer table tbody tr:hover {
+    background-color: #FFA07A; /* LightSalmon */
+}
