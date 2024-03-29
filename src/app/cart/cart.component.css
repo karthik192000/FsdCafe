@@ -1,0 +1,84 @@
+/* Links Container */
+.links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #4caf50; /* Pistachio color */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #388e3c; /* Darker shade of pistachio */
+}
+
+.links button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.links button:hover {
+    background-color: #388e3c;
+}
+
+/* Order Container */
+.orderContainer {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.orderContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orderContainer th, .orderContainer td {
+    padding: 10px;
+    text-align: left;
+}
+
+.orderContainer th {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.orderContainer tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.orderContainer button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5252;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.orderContainer button:hover {
+    background-color: #ff0000;
+}
+
+.orderContainer p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}

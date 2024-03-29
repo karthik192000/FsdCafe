@@ -1,0 +1,35 @@
+<div class="links">
+
+    <router-outlet></router-outlet>
+    <a routerLink="/home">Home</a>
+
+    <router-outlet></router-outlet>
+    <a routerLink="/menu">Menu</a>
+
+    <button (click)="logout()">Logout</button>
+</div>
+
+<div class="orderContainer">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let itemkey of cartMap.keys()">
+                <td>{{cartMap.get(itemkey)!.itemName}}</td>
+                <td>{{cartMap.get(itemkey)!.itemPrice}}</td>
+                <td>{{cartMap.get(itemkey)!.quantity}}</td>
+                <td>{{cartMap.get(itemkey)!.totalPrice}}</td>
+                <td><button (click)="removeFromCart(itemkey)">Remove From cart</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Total price:</p>
+     Rs. {{totalOrderPrice}}
+</div>

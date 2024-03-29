@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { MenuComponent } from './menu/menu.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +27,14 @@ export const routes: Routes = [
 {
     component: EmployeeComponent,
     path:'employee'
+},
+{
+    component:CustomerOrderComponent,
+    path:'myorders'
+},
+{
+    component: CartComponent,
+    path:'mycart'
 },
 {
     path:'**',

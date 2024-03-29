@@ -1,14 +1,21 @@
-<div class="optionsContainer" style="display: inline-block;float: right; margin: 16px;">
+<div class="optionsContainer">
     <router-outlet></router-outlet>
-    <a routerLink="/home" style="margin: 16px;">Home</a>
-    
+    <a routerLink="/home">Home</a>
+
+    <router-outlet></router-outlet>
+    <a routerLink="/myorders">My Orders</a>
+
+    <router-outlet></router-outlet>
+    <a routerLink="/mycart">My Cart</a>
     <button (click)="logout()">Logout</button>
 </div>
 
-<div class="menuContainer" style="display: inline-block;float: left; margin: 50px;background-color: azure;">
+<div class="menuContainer">
 
 
-    <p>Welcome to FSD Cafe, please take a look at our menu</p>
+    <div class="welcome">
+    <p>Welcome to FSD Cafe, please take a look at our menu to place an order</p>
+    </div>
 
 
     <table border="1">
@@ -33,32 +40,4 @@
             </tr>
         </tbody>
     </table>
-</div>
-
-<br><br><br>
-<div class="orderContainer" style="display: inline-block;float: left;background-color: bisque;">
-
-    <p style="text-align: center;">Order</p>
-    <table border="1">
-        <thead>
-            <tr>
-                <td>Item Name</td>
-                <td>Item Price</td>
-                <td>Quantity</td>
-                <td>Total Price</td>
-                <td>Action</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of orderList; index as i">
-                <td>{{item.itemName}}</td>
-                <td>{{item.itemPrice}}</td>
-                <td>{{item.quantity}}</td>
-                <td>{{item.totalPrice}}</td>
-                <td><button (click)="removeFromCart(i)">Remove From cart</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <p>Total price:</p>
-     Rs. {{totalOrderPrice}}
 </div>

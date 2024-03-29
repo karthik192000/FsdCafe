@@ -1,47 +1,50 @@
-/* Styles for the optionsContainer */
+/* Options Container */
 .optionsContainer {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-end;
-    margin: 16px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
 }
 
 .optionsContainer a {
-    margin: 16px;
-    font-size: 1.2em;
-    color: #FF6347; /* Tomato */
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: #4caf50;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.optionsContainer a:hover {
+    background-color: #f2f2f2;
 }
 
 .optionsContainer button {
-    font-size: 1.2em;
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .optionsContainer button:hover {
-    background-color: #FF4500; /* OrangeRed */
+    background-color: #45a049;
 }
 
-/* Styles for the menuContainer */
+/* Menu Container */
 .menuContainer {
-    display: inline-block;
-    float: left;
-    margin: 50px;
-    background-color: #F0FFFF; /* Azure */
     padding: 20px;
 }
 
 .menuContainer p {
+    font-size: 20px;
     margin-bottom: 20px;
-    font-size: 1.2em;
-    text-align: center;
 }
 
 .menuContainer table {
@@ -49,57 +52,40 @@
     border-collapse: collapse;
 }
 
-.menuContainer table th, .menuContainer table td {
-    padding: 8px;
-    text-align: center;
+.menuContainer table td,
+.menuContainer table th {
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
 .menuContainer table th {
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
 
-.menuContainer table tbody tr:nth-child(even) {
-    background-color: #FFE4E1; /* MistyRose */
+.menuContainer input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
 }
 
-.menuContainer table tbody tr:hover {
-    background-color: #FFA07A; /* LightSalmon */
+.menuContainer button {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Styles for the orderContainer */
-.orderContainer {
-    display: inline-block;
-    float: left;
-    background-color: #FFE4C4; /* Bisque */
-    padding: 20px;
+.menuContainer button:hover {
+    background-color: #0056b3;
 }
 
-.orderContainer p {
+.welcome{
+    font-weight: bold;
+    font-style: italic;
     text-align: center;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.orderContainer table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.orderContainer table th, .orderContainer table td {
-    padding: 8px;
-    text-align: center;
-}
-
-.orderContainer table th {
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
-}
-
-.orderContainer table tbody tr:nth-child(even) {
-    background-color: #FFE4E1; /* MistyRose */
-}
-
-.orderContainer table tbody tr:hover {
-    background-color: #FFA07A; /* LightSalmon */
 }

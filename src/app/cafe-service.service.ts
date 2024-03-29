@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenResponse } from './TokenResponse';
 import { LoginRequest } from './LoginRequest';
 import { CreateUserRequest } from './CreateUserRequest';
@@ -8,6 +8,7 @@ import { Menu } from './Menu';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tick } from '@angular/core/testing';
 import { TokenValidationResponse } from './TokenValidationResponse';
+import { Cart } from './Cart';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,14 @@ export class CafeServiceService {
   updateMenuUrl:string;
   addItemToMenuUrl:string;
   public loginRequest:any;
+  cartMap:Map<number,Cart> = new Map();
+
+  private cartMapSharedSubject=  new BehaviorSubject<Map<number,Cart>>(new Map);
+  sharedCartMap = this.cartMapSharedSubject.asObservable();
+
+  private totalOrderPriceSubject = new BehaviorSubject<number>(0);
+  sharedTotalOrderPrice = this.totalOrderPriceSubject.asObservable();
+  totalOrderPrice:number = 0;
 
   constructor(private http:HttpClient) {
     this.loginUrl = 'http://localhost:9090/login';
@@ -92,7 +101,11 @@ export class CafeServiceService {
     return httpHeaders;
    }
 
-   addToCart(){
-    
+   updateCartMap(cartMap:Map<number,Cart>){
+    this.cartMapSharedSubject.next(cartMap);
+   }
+
+   updateTotalOrderPrice(totalOrderPrice:number){
+    this.totalOrderPriceSubject.next(totalOrderPrice);
    }
 }
