@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerOrderComponent } from './customer-order/customer-order.component';
 import { CartComponent } from './cart/cart.component';
+import { ProcessOrderComponent } from './process-order/process-order.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
 {
     component: CartComponent,
     path:'mycart'
+},
+{
+    component:ProcessOrderComponent,
+    path:'processOrders'
 },
 {
     path:'**',

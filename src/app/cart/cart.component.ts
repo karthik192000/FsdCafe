@@ -73,6 +73,7 @@ export class CartComponent implements OnInit{
    this.cafeService.placeOrder(order).subscribe(savedOrder =>{
     console.log(savedOrder);
     this.cartMap.clear();
+    this.totalOrderPrice = 0;
    } );
   }
 

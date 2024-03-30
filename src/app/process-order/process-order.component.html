@@ -1,0 +1,43 @@
+
+<div class="optionsContainer">
+    <router-outlet></router-outlet>
+    <a routerLink = '/home' style="font-weight: bold;">Home</a>
+
+    <router-outlet></router-outlet>
+    <a routerLink = '/employee' style="font-weight: bold;">Employee Portal</a>
+
+    <button (click)="logout()">Logout</button>
+</div>
+<div class="orderContainer">
+    <div class="orderTables">
+
+        <li *ngFor="let order of orderList; index as i">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Item name</th>
+                        <th>Item Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderItem of order.orderItemList">
+                        <td>{{orderItem.itemName}}</td>
+                        <td>{{orderItem.itemPrice}}</td>
+                        <td>{{orderItem.quantity}}</td>
+                        <td>{{orderItem.totalPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="otherOrderDetails">
+
+                <p>Order Status: {{order.orderStatus}}</p>
+
+                <p>Total Order Price: Rs.{{order.totalOrderPrice}}</p>
+            </div>
+            <button (click)="cancelOrder(order.orderId)" [disabled]="order.orderStatus != 'INPROGRESS'">Cancel Order</button>
+            <button (click)="completeOrder(order.orderId)" [disabled]="order.orderStatus != 'INPROGRESS'" class="complete-order">Complete Order</button>
+        </li>
+    </div>
+</div>
