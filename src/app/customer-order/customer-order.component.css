@@ -1,0 +1,93 @@
+/* Options Container */
+.optionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0ead6; /* Pistachio */
+}
+
+.optionsContainer a {
+    text-decoration: none;
+    color: #228B22; /* Dark green */
+    margin-right: 20px;
+}
+
+.optionsContainer button {
+    padding: 10px 20px;
+    background-color: #228B22; /* Dark green */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.optionsContainer button:hover {
+    background-color: #2E8B57; /* Sea green */
+}
+
+/* Order Container */
+.orderContainer {
+    padding: 20px;
+}
+
+.orderTables {
+    list-style-type: none;
+    padding: 0;
+}
+
+.orderTables table {
+    width: 100%;
+    margin-bottom: 20px; /* Add space between tables */
+    border-collapse: collapse;
+    border: 2px solid #228B22; /* Dark green border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.orderTables th, .orderTables td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.orderTables th {
+    background-color: #f0ead6; /* Pistachio */
+}
+
+.otherOrderDetails {
+    margin-top: 10px;
+}
+
+.orderContainer button {
+    padding: 10px 20px;
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right; /* Align to the right */
+    margin-bottom: 20px; /* Add margin between button and next table */
+}
+
+.orderContainer button:disabled {
+    background-color: #ccc; /* Gray */
+    cursor: not-allowed;
+}
+
+/* Add margin between orders */
+.orderTables li {
+    margin-bottom: 20px; /* Adjust spacing between orders */
+}
+
+.myOrders{
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+}
+
+
+.links{
+    font-weight: bold;
+}

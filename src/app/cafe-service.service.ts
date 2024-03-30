@@ -27,6 +27,7 @@ export class CafeServiceService{
   addItemToMenuUrl:string;
   getOrdersUrl:string;
   placeOrderUrl:string;
+  updateOrderStatusUrl:string;
   public loginRequest:any;
 
   cartMap:Map<number,Cart> = new Map();
@@ -51,6 +52,7 @@ export class CafeServiceService{
     this.addItemToMenuUrl= 'http://localhost:8080/cafeservice/menu';
     this.getOrdersUrl = 'http://localhost:8080/cafeservice/order';
     this.placeOrderUrl = 'http://localhost:8080/cafeservice/order';
+    this.updateOrderStatusUrl = 'http://localhost:8080/cafeservice/order/';
    }
 
 
@@ -137,4 +139,12 @@ export class CafeServiceService{
     return this.http.post<Order[]>(this.placeOrderUrl,order,{headers:httpHeaders});
    }
 
+   updateOrderStatus(orderId:string,orderStatus:string){
+    let headers = this.getHttpHeaders();
+    let httpParams = new HttpParams();
+    let requestUrl = this.updateOrderStatusUrl  + orderId + '?orderStatus=' + orderStatus;
+    httpParams.append('orderId',orderId);
+    httpParams.append('orderStatus',orderStatus);
+    return this.http.put(requestUrl,null,{headers:headers});
+   }
 }

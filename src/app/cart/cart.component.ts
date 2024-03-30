@@ -69,11 +69,11 @@ export class CartComponent implements OnInit{
     orderItemList.push(orderItem);
    });
 
-   let order:Order = new Order(orderItemList,this.totalOrderPrice,'INPROGRESS');
+   let order:Order = new Order('','',orderItemList,this.totalOrderPrice,'INPROGRESS');
    this.cafeService.placeOrder(order).subscribe(savedOrder =>{
     console.log(savedOrder);
+    this.cartMap.clear();
    } );
-
   }
 
 }

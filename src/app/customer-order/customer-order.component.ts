@@ -33,4 +33,15 @@ export class CustomerOrderComponent implements OnInit{
 
   }
 
+  cancelOrder(orderId: string){
+    this.cafeService.updateOrderStatus(orderId,'CANCELLED').subscribe(cancelledOrder =>{
+      console.log(cancelledOrder);
+      this.reload();
+    });
+  }
+
+  reload(){
+    window.location.reload();
+  }
+
 }
