@@ -1,105 +1,128 @@
-/* Styles for the optionsContainer */
+/* Options Container */
 .optionsContainer {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: #f8f8f8; /* Light gray */
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .optionsContainer a {
-    margin: 16px;
-    font-size: 1.2em;
-    color: #FF6347; /* Tomato */
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.optionsContainer button {
-    font-size: 1.2em;
+    color: #4caf50; /* Pistachio color */
     padding: 8px 16px;
-    border: none;
     border-radius: 5px;
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
+    background-color: transparent;
+    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.optionsContainer button:hover {
-    background-color: #FF4500; /* OrangeRed */
+.optionsContainer a:hover {
+    background-color: #4caf50; /* Pistachio color */
+    color: #fff;
 }
 
-/* Styles for the menuContainer */
+.optionsContainer .logout button {
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #4caf50; /* Pistachio color */
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.optionsContainer .logout button:hover {
+    background-color: #388e3c; /* Darker shade of pistachio */
+}
+
+/* Menu Container */
 .menuContainer {
     display: flex;
-    margin: 16px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menuTable {
-    margin-right: 16px;
-}
-
-.menuTable table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.menuTable th, .menuTable td {
+.menuTable th,
+.menuTable td {
     padding: 8px;
+    border: 1px solid #ddd;
     text-align: center;
 }
 
 .menuTable th {
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
+    background-color: #f8f8f8; /* Light gray */
 }
 
-.menuTable tbody tr:nth-child(even) {
-    background-color: #FFE4E1; /* MistyRose */
+.menuTable td input[type="text"],
+.menuTable td input[type="number"] {
+    width: calc(100% - 16px);
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.menuTable tbody tr:hover {
-    background-color: #FFA07A; /* LightSalmon */
+.menuTable td input[type="text"]:focus,
+.menuTable td input[type="number"]:focus {
+    outline: none;
+    border-color: #4caf50; /* Pistachio color */
 }
 
 .addToMenuContainer {
-    margin-top: 50px;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f8f8; /* Light gray */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Maximum width to maintain readability */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
-.addToMenuContainer p {
-    margin: 0;
-    font-size: 1.5em;
-    color: #FF6347; /* Tomato */
-}
 
 .addToMenuContainer form {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.addToMenuContainer label {
-    margin: 16px;
-    font-size: 1.1em;
-    color: #FF6347; /* Tomato */
+.addToMenuContainer form label {
+    margin-right: 10px;
 }
 
-.addToMenuContainer input[type="text"],
-.addToMenuContainer input[type="number"] {
-    margin: 16px;
-    padding: 8px;
-    border: 1px solid #FF6347; /* Tomato */
+.addToMenuContainer form input {
+    margin-bottom: 10px;
+}
+
+.addToMenuContainer form button {
+    padding: 10px 20px;
     border-radius: 5px;
-}
-
-.addToMenuContainer button {
-    margin-top: 16px;
-    padding: 8px 16px;
+    background-color: #4caf50; /* Pistachio color */
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    background-color: #FF6347; /* Tomato */
-    color: #FFF; /* White */
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.addToMenuContainer button:hover {
-    background-color: #FF4500; /* OrangeRed */
+.addToMenuContainer form button:hover {
+    background-color: #388e3c; /* Darker shade of pistachio */
 }
+
+
+.welcome{
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+}
+

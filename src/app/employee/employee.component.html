@@ -1,17 +1,20 @@
 
-<div class="optionsContainer" style="display: inline-block;float: right;">
+<div class="optionsContainer">
     <router-outlet>
     </router-outlet>
-    <a routerLink="/home" style="margin: 16px;">Home</a>
-    
+    <a routerLink="/home">Home</a>
+    <div class="logout">
     <button (click)="logout()">Logout</button>
+    </div>
 </div>
 
-<div class="menuContainer" style="display: inline-block;float: left; margin: 16px;">
+<div class="menuContainer">
 
 
-    <div class="menuTable" style="display: inline-block;float: left; margin: 16px;">
-    <p style="text-align: center;">Welcome to FSD cafe employee portal</p>
+    <div class="menuTable">
+        <div class="welcome">
+    <p>Welcome to FSD cafe employee portal</p>
+        </div>
     <table border="1" class="menuTable">
         <thead>
             <tr>
@@ -49,22 +52,22 @@
     </table>
     </div>
 
-    <div class="addToMenuContainer" style="display: inline-block;float: right; margin: 16x;">
+    <div class="addToMenuContainer">
 
         <p style="margin: 50px;text-align: center;">Add Item to Menu</p>
         <form [formGroup]="menuFormGroup" (ngSubmit)="addItemToMenu()">
 
             <label for="itemName">Item Name:</label>
-            <input #itemName type="text" formControlName="itemName" style="margin: 16px;">
+            <input #itemName type="text" formControlName="itemName">
             <label for="itemPrice">Item Price:</label>
-            <input #itemPrice type="number" formControlName="itemPrice" style="margin: 16px;">
+            <input #itemPrice type="number" formControlName="itemPrice">
             <br>
             <label for="itemCategory">Item Category:</label>
-            <input #itemCategory type="text" formControlName="itemCategory" style="margin: 16px;">
+            <input #itemCategory type="text" formControlName="itemCategory">
             <label for="itemCategory">Veg or Non-Veg:</label>
-            <input #vegOrNonVeg type="text" formControlName="vegOrNonVeg" style="margin: 16px;">
+            <input #vegOrNonVeg type="text" formControlName="vegOrNonVeg">
             <br><br>
-            <button type="submit" style="display: inline-block;float: right;">Add to Menu</button>
+            <button type="submit">Add to Menu</button>
         </form>
     </div>
 </div>
