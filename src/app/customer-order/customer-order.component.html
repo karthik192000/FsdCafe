@@ -1,24 +1,33 @@
+
+<div class="optionsContainer">
+    <router-outlet></router-outlet>
+    <a routerLink = '/home'>Home</a>
+
+    <button (click)="logout()">Logout</button>
+</div>
 <div class="orderContainer">
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Item Name</th>
-                <th>Item Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of orderList; index as i">
-                <td>{{item.itemName}}</td>
-                <td>{{item.itemPrice}}</td>
-                <td>{{item.quantity}}</td>
-                <td>{{item.totalPrice}}</td>
-                <td><button>Remove From cart</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <p>Total price:</p>
-     <!-- Rs. {{totalOrderPrice}} -->
+    <div class="orderTables">
+
+        <li *ngFor="let order of orderList; index as i">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Item name</th>
+                        <th>Item Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderItem of order.orderItemList">
+                        <td>{{orderItem.itemName}}</td>
+                        <td>{{orderItem.itemPrice}}</td>
+                        <td>{{orderItem.quantity}}</td>
+                        <td>{{orderItem.totalPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button [disabled]="order.orderStatus != 'INPROGRESS'">Cancel Order</button>
+        </li>
+    </div>
 </div>

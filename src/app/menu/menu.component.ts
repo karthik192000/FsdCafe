@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit } from '@angular/core';
 import { Menu } from '../Menu';
 import { CafeServiceService } from '../cafe-service.service';
 import { Observable } from 'rxjs';
@@ -24,7 +24,10 @@ export class MenuComponent implements OnInit {
   totalOrderPrice:number = 0;
   cartMap:Map<number,Cart> = new Map;
   role:string='';
-  constructor(private cafeService:CafeServiceService,private router:Router){
+  constructor(private cafeService:CafeServiceService,private router:Router,private changeDetector:ChangeDetectorRef){
+    this.cafeService.sharedCartMap.subscribe(sharedCartMap => {
+      this.cartMap = sharedCartMap;
+    })
   }
 
 
@@ -37,13 +40,10 @@ export class MenuComponent implements OnInit {
       this.router.navigate(['/employee'])
     }
     this.getMenu();
-    this.cafeService.sharedCartMap.subscribe(sharedCartMap => {
-      this.cartMap = sharedCartMap;
-    })
     this.cafeService.sharedTotalOrderPrice.subscribe(sharedTotalOrderPrice =>{
       this.totalOrderPrice = sharedTotalOrderPrice;
     })
-    
+    this.changeDetector.detectChanges();  
   }
 
   getMenu(){
@@ -97,6 +97,7 @@ export class MenuComponent implements OnInit {
     cartItem = new Cart(menu?.itemKey!,menu?.itemName!,menu?.itemPrice!,quantity,totalPrice);
     }
     this.cartMap.set(menu?.itemKey!,cartItem);
+    this.changeDetector.detectChanges();
     this.cafeService.updateCartMap(this.cartMap);
     this.totalOrderPrice+=totalPrice;
     this.cafeService.updateTotalOrderPrice(this.totalOrderPrice);

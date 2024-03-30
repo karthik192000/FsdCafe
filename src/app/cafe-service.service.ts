@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenResponse } from './TokenResponse';
 import { LoginRequest } from './LoginRequest';
@@ -9,11 +9,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tick } from '@angular/core/testing';
 import { TokenValidationResponse } from './TokenValidationResponse';
 import { Cart } from './Cart';
+import { Order } from './Order';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CafeServiceService {
+export class CafeServiceService{
 
 
 
@@ -24,6 +25,8 @@ export class CafeServiceService {
   removeFromMenuUrl:string;
   updateMenuUrl:string;
   addItemToMenuUrl:string;
+  getOrdersUrl:string;
+  placeOrderUrl:string;
   public loginRequest:any;
 
   cartMap:Map<number,Cart> = new Map();
@@ -46,6 +49,8 @@ export class CafeServiceService {
     this.removeFromMenuUrl =  'http://localhost:8080/cafeservice/menu';
     this.updateMenuUrl = 'http://localhost:8080/cafeservice/menu';
     this.addItemToMenuUrl= 'http://localhost:8080/cafeservice/menu';
+    this.getOrdersUrl = 'http://localhost:8080/cafeservice/order';
+    this.placeOrderUrl = 'http://localhost:8080/cafeservice/order';
    }
 
 
@@ -120,4 +125,16 @@ export class CafeServiceService {
    getRole():string{
     return localStorage?.getItem('role')!;
    }
+
+
+   getOrders(){
+     let httpHeaders =this.getHttpHeaders();
+     return this.http.get<Order[]>(this.getOrdersUrl,{headers:httpHeaders});
+   }
+
+   placeOrder(order:Order){
+    let httpHeaders = this.getHttpHeaders();
+    return this.http.post<Order[]>(this.placeOrderUrl,order,{headers:httpHeaders});
+   }
+
 }

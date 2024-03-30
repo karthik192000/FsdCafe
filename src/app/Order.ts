@@ -7,8 +7,11 @@ export class Order{
 
     totalOrderPrice:number;
 
-    constructor(orderItemList:OrderItem[],totalOrderPrice:number){
+    orderStatus:string;
+
+    constructor(orderItemList:OrderItem[],totalOrderPrice:number,orderStatus:string){
         this.orderItemList  = orderItemList;
         this.totalOrderPrice = totalOrderPrice;
+        this.orderStatus = orderStatus;
     }
 }

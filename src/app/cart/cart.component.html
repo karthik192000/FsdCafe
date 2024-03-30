@@ -32,4 +32,8 @@
     </table>
     <p>Total price:</p>
      Rs. {{totalOrderPrice}}
+     <br><br>
+     <div class="placeOrder">
+     <button (click)="placeOrder()" [disabled]="placeOrderDisabled">Place Order</button>
+     </div>
 </div>
