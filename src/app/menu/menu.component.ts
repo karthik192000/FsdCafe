@@ -83,7 +83,6 @@ export class MenuComponent implements OnInit {
     let quantity = parseInt(quantityString);
     let menu = this.menu.at(index);
     let totalPrice = menu?.itemPrice! * quantity;
-    let order = new Order(menu?.itemKey!,menu?.itemName!,menu?.itemPrice!,quantity,totalPrice);
   
     let cartItem = this.cartMap.get(menu?.itemKey!);
     if(cartItem != null){
@@ -101,14 +100,6 @@ export class MenuComponent implements OnInit {
     this.cafeService.updateCartMap(this.cartMap);
     this.totalOrderPrice+=totalPrice;
     this.cafeService.updateTotalOrderPrice(this.totalOrderPrice);
-    this.orderList.push(order);
-  }
-
-  removeFromCart(index :number){
-    let orderAtIndex = this.orderList.at(index);
-    let priceTobeDeducted = orderAtIndex?.totalPrice;
-    this.orderList.splice(index,1);
-    this.totalOrderPrice = this.totalOrderPrice - priceTobeDeducted!;
   }
 
 
