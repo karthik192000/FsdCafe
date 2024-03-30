@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵNgOnChangesFeature } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CafeServiceService } from '../cafe-service.service';
 import { TokenResponse } from '../TokenResponse';
@@ -32,9 +32,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     let token = localStorage!?.getItem('authtoken');
     if(token!=null){
-      this.cafeService.sharedRole.subscribe(sharedRole => {
-        this.role = sharedRole;
-      });
+      this.role = this.cafeService.getRole();
       if(this.role!=null  && this.role !=''){
       let route = this.role == 'CUSTOMER' ? '../menu' : ((this.role == 'ADMIN') ||(this.role == 'EMPLOYEE')  ? '../employee' : '') ;
       this._router.navigate([route]);
@@ -46,9 +44,7 @@ export class LoginComponent implements OnInit{
   onLogin(){
     this.cafeService.login(this.login.get('username')!.value,this.login.get('password')!.value,this.login.get('role')!.value).subscribe(response=>{
       localStorage?.setItem('authtoken',response.token);
-      this.cafeService.sharedRole.subscribe(sharedRole =>{
-        this.role = sharedRole;
-      })
+      this.role = this.cafeService.getRole();
       let route = '';
       if(this.role == 'CUSTOMER'){
         route = '../menu';

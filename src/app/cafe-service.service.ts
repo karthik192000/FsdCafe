@@ -53,7 +53,7 @@ export class CafeServiceService {
     this.loginRequest= new LoginRequest(userName,password,role);
     let response = this.http.post<TokenResponse>(`${this.loginUrl}`,this.loginRequest);
     response.subscribe(data => {
-      this.roleSubject.next(data.userRole);
+      localStorage.setItem('role',data.userRole);
     })
     return response
    }
@@ -115,5 +115,9 @@ export class CafeServiceService {
 
    updateTotalOrderPrice(totalOrderPrice:number){
     this.totalOrderPriceSubject.next(totalOrderPrice);
+   }
+
+   getRole():string{
+    return localStorage?.getItem('role')!;
    }
 }

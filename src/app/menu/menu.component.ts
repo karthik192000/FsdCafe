@@ -29,9 +29,7 @@ export class MenuComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cafeService.sharedRole.subscribe(sharedRole => {
-      this.role = sharedRole;
-    })
+    this.role = this.cafeService.getRole();
     if(this.role == '' || this.role == null){
       this.logout();
     }

@@ -22,9 +22,7 @@ export class CartComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.cafeService.sharedRole.subscribe(sharedRole => {
-      this.role = sharedRole;
-    })
+    this.role = this.cafeService.getRole();
     if(this.role != 'CUSTOMER'){
       this._router.navigate(['/home']);
     }
