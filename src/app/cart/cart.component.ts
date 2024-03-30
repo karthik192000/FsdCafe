@@ -17,12 +17,15 @@ export class CartComponent implements OnInit{
 
   cartMap: Map<number,Cart> = new Map;
   totalOrderPrice:number = 0;
+  role:string = '';
   constructor(private cafeService:CafeServiceService, private _router: Router){
 
   }
   ngOnInit(): void {
-    let role = localStorage.getItem('role');
-    if(role != 'CUSTOMER'){
+    this.cafeService.sharedRole.subscribe(sharedRole => {
+      this.role = sharedRole;
+    })
+    if(this.role != 'CUSTOMER'){
       this._router.navigate(['/home']);
     }
     this.cafeService.sharedCartMap.subscribe(sharedCartMap =>{

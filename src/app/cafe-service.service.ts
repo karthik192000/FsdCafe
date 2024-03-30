@@ -25,6 +25,7 @@ export class CafeServiceService {
   updateMenuUrl:string;
   addItemToMenuUrl:string;
   public loginRequest:any;
+
   cartMap:Map<number,Cart> = new Map();
 
   private cartMapSharedSubject=  new BehaviorSubject<Map<number,Cart>>(new Map);
@@ -33,6 +34,9 @@ export class CafeServiceService {
   private totalOrderPriceSubject = new BehaviorSubject<number>(0);
   sharedTotalOrderPrice = this.totalOrderPriceSubject.asObservable();
   totalOrderPrice:number = 0;
+
+  private roleSubject = new BehaviorSubject<string>('');
+  sharedRole= this.roleSubject.asObservable();
 
   constructor(private http:HttpClient) {
     this.loginUrl = 'http://localhost:9090/login';
@@ -47,7 +51,11 @@ export class CafeServiceService {
 
    login(userName:string,password:string,role:string):Observable<TokenResponse>{
     this.loginRequest= new LoginRequest(userName,password,role);
-    return this.http.post<TokenResponse>(`${this.loginUrl}`,this.loginRequest);
+    let response = this.http.post<TokenResponse>(`${this.loginUrl}`,this.loginRequest);
+    response.subscribe(data => {
+      this.roleSubject.next(data.userRole);
+    })
+    return response
    }
 
    signup(createUserRequest:CreateUserRequest){

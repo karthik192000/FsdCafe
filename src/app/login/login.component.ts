@@ -4,6 +4,7 @@ import { CafeServiceService } from '../cafe-service.service';
 import { TokenResponse } from '../TokenResponse';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { routes } from '../app.routes';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -26,12 +27,18 @@ export class LoginComponent implements OnInit{
   });
 
 
+  role:string = '';
+
   ngOnInit(): void {
     let token = localStorage!?.getItem('authtoken');
     if(token!=null){
-      let role = localStorage?.getItem('role');
-      let route = role == 'CUSTOMER' ? '../menu' : ((role == 'ADMIN') ||(role == 'EMPLOYEE')  ? '../employee' : '') ;
+      this.cafeService.sharedRole.subscribe(sharedRole => {
+        this.role = sharedRole;
+      });
+      if(this.role!=null  && this.role !=''){
+      let route = this.role == 'CUSTOMER' ? '../menu' : ((this.role == 'ADMIN') ||(this.role == 'EMPLOYEE')  ? '../employee' : '') ;
       this._router.navigate([route]);
+      }
     }
   }
 
@@ -39,13 +46,14 @@ export class LoginComponent implements OnInit{
   onLogin(){
     this.cafeService.login(this.login.get('username')!.value,this.login.get('password')!.value,this.login.get('role')!.value).subscribe(response=>{
       localStorage?.setItem('authtoken',response.token);
-      localStorage?.setItem('role',this.login.get('role')!.value);
-      let role = this.login.get('role')!.value;
+      this.cafeService.sharedRole.subscribe(sharedRole =>{
+        this.role = sharedRole;
+      })
       let route = '';
-      if(role == 'CUSTOMER'){
+      if(this.role == 'CUSTOMER'){
         route = '../menu';
       }
-      else if(role == 'ADMIN' || role == 'EMPLOYEE'){
+      else if(this.role == 'ADMIN' || this.role == 'EMPLOYEE'){
         route = '../employee';
       }
       if(route !== ''){
@@ -54,7 +62,6 @@ export class LoginComponent implements OnInit{
     });
 
   }
-
 
 
 

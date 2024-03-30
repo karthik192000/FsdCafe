@@ -15,11 +15,21 @@ import { FormControl, FormGroup, NgModel, ReactiveFormsModule } from '@angular/f
 export class EmployeeComponent implements OnInit{
 
   menu:Menu[] = [];
+  role:string='';
 
   constructor(private cafeService: CafeServiceService, private router:Router){
     
   }
   ngOnInit(): void {
+    this.cafeService.sharedRole.subscribe(sharedRole =>{
+      this.role = sharedRole;
+    });
+    if(this.role == '' || this.role == null ){
+      this.logout();
+    }
+    if(this.role != 'EMPLOYEE'){
+      this.router.navigate(['/home']);
+    }
     this.getMenu();
   }
 

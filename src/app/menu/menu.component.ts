@@ -23,11 +23,21 @@ export class MenuComponent implements OnInit {
   orderList:Order[] = [];
   totalOrderPrice:number = 0;
   cartMap:Map<number,Cart> = new Map;
+  role:string='';
   constructor(private cafeService:CafeServiceService,private router:Router){
   }
 
 
   ngOnInit(): void {
+    this.cafeService.sharedRole.subscribe(sharedRole => {
+      this.role = sharedRole;
+    })
+    if(this.role == '' || this.role == null){
+      this.logout();
+    }
+    else if(this.role != 'CUSTOMER'){
+      this.router.navigate(['/employee'])
+    }
     this.getMenu();
     this.cafeService.sharedCartMap.subscribe(sharedCartMap => {
       this.cartMap = sharedCartMap;
