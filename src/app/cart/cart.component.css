@@ -77,6 +77,11 @@
     background-color: #ff0000;
 }
 
+.orderContainer button:disabled{
+    background-color: #ccc; /* Gray */
+    cursor: not-allowed;
+}
+
 .orderContainer p {
     margin-top: 20px;
     font-size: 18px;

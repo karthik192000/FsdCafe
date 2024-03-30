@@ -88,3 +88,6 @@
 .orderTables li {
     margin-bottom: 20px; /* Adjust spacing between orders */
 }
+.otherOrderDetails{
+    font-weight: bold;
+}

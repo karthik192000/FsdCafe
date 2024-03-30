@@ -74,7 +74,12 @@ export class CartComponent implements OnInit{
     console.log(savedOrder);
     this.cartMap.clear();
     this.totalOrderPrice = 0;
+    this.reload();
    } );
   }
 
+
+  reload(){
+    window.location.reload();
+  }
 }
