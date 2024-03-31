@@ -48,6 +48,9 @@ export class CartComponent implements OnInit{
     this.changeDetector.detectChanges();
     this.cafeService.updateCartMap(this.cartMap);
     this.cafeService.updateTotalOrderPrice(this.totalOrderPrice);
+    if(this.cartMap.size == 0){
+      this.reload();
+    }
   }
 
   logout(){

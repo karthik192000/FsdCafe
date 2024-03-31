@@ -128,6 +128,10 @@ export class CafeServiceService{
     return localStorage?.getItem('role')!;
    }
 
+   getUserName():string{
+    return localStorage?.getItem('userName')!;
+   }
+
 
    getOrders(){
      let httpHeaders =this.getHttpHeaders();
