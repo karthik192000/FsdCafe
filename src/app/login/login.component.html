@@ -4,6 +4,11 @@
         <div class="name-group">
             <label for="name">User name (Email-Id): </label>
             <input type="email" name="userName" #name formControlName="username">
+
+        <div *ngIf="f['username'].touched && f['username'].invalid" class="alert alert-danger">
+            <div *ngIf="f['username'].errors && f['username'].errors['required']" style="color: red;">Please provide Username</div>
+            <div *ngIf="f['username'].errors && f['username'].errors['email']" style="color: red;">Invalid Username</div>
+        </div>
         </div>
 
 
@@ -11,6 +16,9 @@
         <div class="password-group">
             <label for="password">Password: </label>
             <input type="password" name="password" #password formControlName="password">
+        </div>
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+        <div *ngIf="f['password'].errors && f['password'].errors['required']" style="color: red;">Please provide password</div>
         </div>
         <br>
         <div class="role-group">
@@ -20,7 +28,7 @@
         </div>
         <br>
         <div class="form-group">
-        <button type="submit">Login</button>
+        <button [disabled]="login.invalid" type="submit">Login</button>
         </div>
         <br>
         <router-outlet></router-outlet>

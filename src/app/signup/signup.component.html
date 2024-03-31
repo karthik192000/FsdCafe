@@ -8,18 +8,39 @@
         <input type="email" #username formControlName="username">
         </div>
 
+        <div *ngIf="f['username'].touched && f['username'].invalid" class="alert alert-danger">
+            <div *ngIf="f['username'].errors && f['username'].errors['required']" style="color: red;">Please provide Username</div>
+            <div *ngIf="f['username'].errors && f['username'].errors['email']" style="color: red;">Invalid Username</div>
+        </div>
+
         <div class="username-group">
         <label for="username">Name: </label>
         <input type="email" #username formControlName="name">
         </div>
+
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']" style="color: red;">Please provide Name</div>
+        </div>
+
         <div class="password-group">
         <label for="password">Password: </label>
         <input type="password" #password formControlName="password">
         </div>
 
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+            <div *ngIf="f['password'].errors && f['password'].errors['required']" style="color: red;">Please provide password</div>
+            <div *ngIf="f['password'].errors && f['password'].errors['min']" style="color: red;">Invalid password</div>
+        </div>
+
         <div class="confirmpassword-group">
         <label for="confirmPassword">Confirm Password: </label>
         <input type="password" #confirmPassword formControlName="confirmPassword">
+        </div>
+
+        <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid" class="alert alert-danger">
+            <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['required']" style="color: red;">Please confirm password</div>
+            <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['min']" style="color: red;">Invalid Password</div>
+            <div *ngIf="signUp.hasError('notSame')" style="color: red;">Passwords donot match</div>
         </div>
 
         <div class="role-group">
@@ -28,8 +49,7 @@
         <input type="radio" #role  value="CUSTOMER" formControlName="role"> Customer
         </div>
 
-
-        <button type="submit">Sign-Up</button>
+        <button [disabled]="signUp.invalid" type="submit">Sign-Up</button>
         <div class="links">
         <router-outlet></router-outlet>
         <a routerLink="/home" style="margin: 16px;">Home</a>
