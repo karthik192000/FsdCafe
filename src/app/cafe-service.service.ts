@@ -1,15 +1,16 @@
 import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { TokenResponse } from './TokenResponse';
 import { LoginRequest } from './LoginRequest';
 import { CreateUserRequest } from './CreateUserRequest';
 import { SignUpResponse } from './SignUpResponse';
 import { Menu } from './Menu';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tick } from '@angular/core/testing';
 import { TokenValidationResponse } from './TokenValidationResponse';
 import { Cart } from './Cart';
 import { Order } from './Order';
+import { setAlternateWeakRefImpl } from '@angular/core/primitives/signals';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +59,9 @@ export class CafeServiceService{
 
    login(userName:string,password:string,role:string):Observable<TokenResponse>{
     this.loginRequest= new LoginRequest(userName,password,role);
-    let response = this.http.post<TokenResponse>(`${this.loginUrl}`,this.loginRequest);
+    let response = this.http.post<TokenResponse>(`${this.loginUrl}`,this.loginRequest).pipe(
+      catchError(this.handleHttpErrors)
+    );
     response.subscribe(data => {
       localStorage.setItem('role',data.userRole);
     })
@@ -66,19 +69,21 @@ export class CafeServiceService{
    }
 
    signup(createUserRequest:CreateUserRequest){
-    return this.http.post<SignUpResponse>(`${this.signUpUrl}`,createUserRequest);
+    return this.http.post<SignUpResponse>(`${this.signUpUrl}`,createUserRequest).pipe(catchError(this.handleHttpErrors));
    }
 
    getMenu(){
     let httpHeaders = this.getHttpHeaders();
-    return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders});
+    return this.http.get<Menu[]>(`${this.getMenuUrl}`,{headers:httpHeaders}).pipe(
+      catchError(this.handleHttpErrors)
+    );
    }
 
 
    validateToken(token:string):Observable<TokenValidationResponse>{
     let httpHeaders = this.getHttpHeaders();
     let status = '';
-   return this.http.get<TokenValidationResponse>(`${this.validateTokenUrl}`,{headers:httpHeaders});
+   return this.http.get<TokenValidationResponse>(`${this.validateTokenUrl}`,{headers:httpHeaders}).pipe(catchError(this.handleHttpErrors));
    }
 
    logout(){
@@ -90,7 +95,9 @@ export class CafeServiceService{
     let params = new HttpParams();
     params.append('itemkey',itemKey);
     let api = this.removeFromMenuUrl + '?itemkey=' + JSON.stringify(itemKey);
-    this.http.delete(api,{headers:httpHeaders,params:params}).subscribe(data=>
+    this.http.delete(api,{headers:httpHeaders,params:params}).pipe(
+      catchError(this.handleHttpErrors)
+    ).subscribe(data=>
       {
         console.log(data);
       });
@@ -98,14 +105,14 @@ export class CafeServiceService{
 
    updateItemInMenu(itemList:Menu[]){
     let httpHeaders = this.getHttpHeaders();
-    this.http.put(this.updateMenuUrl,itemList,{headers:httpHeaders}).subscribe(data => {
+    this.http.put(this.updateMenuUrl,itemList,{headers:httpHeaders}).pipe(catchError(this.handleHttpErrors)).subscribe(data => {
       console.log('Updated Menu : ' + data);
     });
    }
 
    addItemToMenu(itemList:Menu[]){
     let httpHeaders = this.getHttpHeaders();
-    this.http.post(this.addItemToMenuUrl,itemList,{headers:httpHeaders}).subscribe(data =>
+    this.http.post(this.addItemToMenuUrl,itemList,{headers:httpHeaders}).pipe(catchError(this.handleHttpErrors)).subscribe(data =>
       {
         console.log('Item added');
       });
@@ -135,12 +142,12 @@ export class CafeServiceService{
 
    getOrders(){
      let httpHeaders =this.getHttpHeaders();
-     return this.http.get<Order[]>(this.getOrdersUrl,{headers:httpHeaders});
+     return this.http.get<Order[]>(this.getOrdersUrl,{headers:httpHeaders}).pipe(catchError(this.handleHttpErrors));
    }
 
    placeOrder(order:Order){
     let httpHeaders = this.getHttpHeaders();
-    return this.http.post<Order[]>(this.placeOrderUrl,order,{headers:httpHeaders});
+    return this.http.post<Order[]>(this.placeOrderUrl,order,{headers:httpHeaders}).pipe(catchError(this.handleHttpErrors));
    }
 
    updateOrderStatus(orderId:string,orderStatus:string){
@@ -149,6 +156,26 @@ export class CafeServiceService{
     let requestUrl = this.updateOrderStatusUrl  + orderId + '?orderStatus=' + orderStatus;
     httpParams.append('orderId',orderId);
     httpParams.append('orderStatus',orderStatus);
-    return this.http.put(requestUrl,null,{headers:headers});
+    return this.http.put(requestUrl,null,{headers:headers}).pipe(catchError(this.handleHttpErrors));
+   }
+
+
+   handleHttpErrors(error:HttpErrorResponse){
+    if(error.status == 0){
+      alert('Client error: ' + error.error);
+    }
+    else if(error.status == 403){
+      console.error('Backend error: ' +  error.error);
+      alert('You are not authorized to perform this Action');
+    }
+    else if(error.status == 401){
+      console.error('Backend error: ' + error.error);
+      alert('Unable to Authenticate User, your session might be expired or you have provided invalid credntials please try logging in again');
+    }
+    else if(error.status == 500){
+      console.error('Backend error: ' + error.error);
+      alert('Something went wrong please try again later');
+    }
+    return throwError(() => new Error('Something went wrong'));
    }
 }
