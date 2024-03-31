@@ -161,21 +161,7 @@ export class CafeServiceService{
 
 
    handleHttpErrors(error:HttpErrorResponse){
-    if(error.status == 0){
-      alert('Client error: ' + error.error);
-    }
-    else if(error.status == 403){
-      console.error('Backend error: ' +  error.error);
-      alert('You are not authorized to perform this Action');
-    }
-    else if(error.status == 401){
-      console.error('Backend error: ' + error.error);
-      alert('Unable to Authenticate User, your session might be expired or you have provided invalid credntials please try logging in again');
-    }
-    else if(error.status == 500){
-      console.error('Backend error: ' + error.error);
-      alert('Something went wrong please try again later');
-    }
+    alert(error.error.errorMessage);
     return throwError(() => new Error('Something went wrong'));
    }
 }
