@@ -24,7 +24,6 @@ export class MenuComponent implements OnInit {
   totalOrderPrice:number = 0;
   cartMap:Map<number,Cart> = new Map;
   role:string='';
-  userName:string='';
   constructor(private cafeService:CafeServiceService,private router:Router,private changeDetector:ChangeDetectorRef){
     this.cafeService.sharedCartMap.subscribe(sharedCartMap => {
       this.cartMap = sharedCartMap;
