@@ -19,6 +19,7 @@
         </div>
         <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
         <div *ngIf="f['password'].errors && f['password'].errors['required']" style="color: red;">Please provide password</div>
+        <div *ngIf="f['password'].errors && f['password'].errors['minLength']" style="color: red;"></div>
         </div>
         <br>
         <div class="role-group">

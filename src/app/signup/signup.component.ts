@@ -52,7 +52,6 @@ export class SignupComponent {
 
 
   onSignUp(){
-
     this.username = this.signUp.get('username')?.value!;
     this.name = this.signUp.get('name')?.value!;
     this.password = this.signUp.get('password')?.value!;
@@ -67,11 +66,15 @@ export class SignupComponent {
     this.cafeService.signup(this.createUserRequest).subscribe(response => {
       console.log(response);
     })
-
+    this.logout();
     this._router.navigate(['/login']);
   }
 
   get f(){
     return this.signUp.controls;
+  }
+
+  logout(){
+    this.cafeService.logout();
   }
 }
