@@ -29,7 +29,7 @@
 
         <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
             <div *ngIf="f['password'].errors && f['password'].errors['required']" style="color: red;">Please provide password</div>
-            <div *ngIf="f['password'].errors && f['password'].errors['minLength']" style="color: red;">Invalid password</div>
+            <div *ngIf="f['password'].errors && f['password'].errors['minlength']" style="color: red;">Password should be atleast 7 characters long</div>
         </div>
 
         <div class="confirmpassword-group">
@@ -39,7 +39,7 @@
 
         <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid" class="alert alert-danger">
             <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['required']" style="color: red;">Please confirm password</div>
-            <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['minLength']" style="color: red;">Invalid Password</div>
+            <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['minlength']" style="color: red;">Password should be atleast 7 characters long</div>
             <div *ngIf="signUp.hasError('notSame')" style="color: red;">Passwords donot match</div>
         </div>
 
